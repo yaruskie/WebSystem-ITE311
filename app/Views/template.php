@@ -9,17 +9,8 @@
 </head>
 <body>
 
-    <!-- Simple Navigation Bar -->
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="<?= site_url('/') ?>">MySite</a>
-            <div>
-                <a class="btn btn-outline-light me-2" href="<?= site_url('/') ?>">Home</a>
-                <a class="btn btn-outline-light me-2" href="<?= site_url('about') ?>">About</a>
-                <a class="btn btn-outline-light" href="<?= site_url('contact') ?>">Contact</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Header include -->
+    <?= $this->include('templates/header') ?>
 
     <!-- Main Content Area -->
     <div class="container mt-5">

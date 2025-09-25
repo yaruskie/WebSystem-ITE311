@@ -22,7 +22,7 @@ class Auth extends Controller
                 'email' => 'required|valid_email|is_unique[users.email]',
                 'password' => 'required|min_length[6]',
                 'password_confirm' => 'matches[password]',
-                'role' => 'permit_empty|in_list[student,teacher]'
+                'role' => 'required|in_list[student,teacher,admin]'
             ];
             
             if ($this->validate($rules)) {
@@ -33,7 +33,7 @@ class Auth extends Controller
                     $name = trim($this->request->getPost('name'));
                     $email = $this->request->getPost('email');
                     $roleInput = strtolower((string) $this->request->getPost('role'));
-                    $role = in_array($roleInput, ['student','teacher'], true) ? $roleInput : 'student';
+                    $role = in_array($roleInput, ['student','teacher','admin'], true) ? $roleInput : 'student';
                     
                     $plainPassword = (string) $this->request->getPost('password');
                     $passwordHash = password_hash($plainPassword, PASSWORD_DEFAULT);

@@ -154,3 +154,184 @@ Stack trace:
 #9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 #10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 #11 {main}
+ERROR - 2025-09-25 17:01:26 --> mysqli_sql_exception: Unknown column 'e.student_id' in 'where clause' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `c`.`id`...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.`id`...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.`id`...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-09-25 17:01:26 --> mysqli_sql_exception: Table 'lms_cezar.assignments' doesn't exist in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `a`.`id`...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `a`.`id`...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `a`.`id`...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `a`.`id`...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(254): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-09-25 17:01:26 --> mysqli_sql_exception: Table 'lms_cezar.grades' doesn't exist in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `g`.`sco...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `g`.`sco...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `g`.`sco...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `g`.`sco...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-09-25 17:07:57 --> ParseError: syntax error, unexpected token "else", expecting end of file
+[Method: GET, Route: contact]
+in APPPATH\Views\template.php on line 31.
+ 1 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\View\View.php(242): CodeIgniter\View\View->render('template', [], true)
+ 3 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('contact', [], true)
+ 4 APPPATH\Controllers\Home.php(19): view('contact')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->contact()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-25 17:12:45 --> mysqli_sql_exception: Unknown column 'student_name' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `student...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `student...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `student...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `student...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(225): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-09-25 17:13:12 --> mysqli_sql_exception: Unknown column 'student_name' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `student...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `student...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `student...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `student...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(225): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-09-25 17:13:14 --> mysqli_sql_exception: Unknown column 'student_name' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `student...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `student...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `student...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `student...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(225): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-09-25 17:14:15 --> mysqli_sql_exception: Unknown column 'e.student_id' in 'where clause' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `c`.`id`...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.`id`...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.`id`...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-09-25 17:14:15 --> mysqli_sql_exception: Table 'lms_cezar.assignments' doesn't exist in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `a`.`id`...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `a`.`id`...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `a`.`id`...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `a`.`id`...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(254): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-09-25 17:14:15 --> mysqli_sql_exception: Table 'lms_cezar.grades' doesn't exist in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `g`.`sco...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `g`.`sco...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `g`.`sco...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `g`.`sco...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-09-25 17:19:58 --> mysqli_sql_exception: Unknown column 'e.student_id' in 'where clause' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `c`.`id`...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.`id`...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.`id`...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `c`.`id`...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-09-25 17:19:58 --> mysqli_sql_exception: Table 'lms_cezar.assignments' doesn't exist in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `a`.`id`...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `a`.`id`...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `a`.`id`...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `a`.`id`...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(254): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-09-25 17:19:58 --> mysqli_sql_exception: Table 'lms_cezar.grades' doesn't exist in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `g`.`sco...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `g`.`sco...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `g`.`sco...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `g`.`sco...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
