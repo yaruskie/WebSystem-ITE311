@@ -136,8 +136,98 @@
                 <?php endif; ?>
             </div>
         </div>
+    <?php elseif ($role === 'student'): ?>
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-dark text-white">My Enrolled Courses</div>
+            <div class="card-body">
+                <?php if (!empty($enrolledCourses)): ?>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Created At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($enrolledCourses as $c): ?>
+                                    <tr>
+                                        <td><?= esc($c['id'] ?? '') ?></td>
+                                        <td><?= esc($c['title'] ?? '') ?></td>
+                                        <td><?= esc($c['description'] ?? '') ?></td>
+                                        <td><?= esc($c['created_at'] ?? '') ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php else: ?>
+                    <p class="mb-0">You are not enrolled in any courses yet.</p>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-secondary text-white">Upcoming Deadlines</div>
+                    <div class="card-body">
+                        <?php if (!empty($upcomingDeadlines)): ?>
+                            <ul class="list-group list-group-flush">
+                                <?php foreach ($upcomingDeadlines as $d): ?>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <div class="fw-semibold"><?= esc($d['title'] ?? 'Assignment') ?></div>
+                                            <div class="text-muted small">Course: <?= esc($d['course_title'] ?? '') ?></div>
+                                        </div>
+                                        <span class="badge bg-dark"><?= esc($d['due_date'] ?? '') ?></span>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php else: ?>
+                            <p class="mb-0">No upcoming deadlines.</p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-secondary text-white">Recent Grades</div>
+                    <div class="card-body">
+                        <?php if (!empty($recentGrades)): ?>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Assignment</th>
+                                            <th>Course</th>
+                                            <th>Score</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($recentGrades as $g): ?>
+                                            <tr>
+                                                <td><?= esc($g['assignment_title'] ?? '') ?></td>
+                                                <td><?= esc($g['course_title'] ?? '') ?></td>
+                                                <td><?= esc($g['score'] ?? '') ?></td>
+                                                <td><?= esc($g['created_at'] ?? '') ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <?php else: ?>
+                            <p class="mb-0">No recent grades.</p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     <?php else: ?>
-        <div class="alert alert-info">This dashboard currently has custom content for admin and teacher roles.</div>
+        <div class="alert alert-info">This dashboard currently has custom content for admin, teacher, and student roles.</div>
     <?php endif; ?>
 </div>
 <?= $this->endSection() ?>
