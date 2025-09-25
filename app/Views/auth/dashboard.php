@@ -81,8 +81,63 @@
                 <?php endif; ?>
             </div>
         </div>
+    <?php elseif ($role === 'teacher'): ?>
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-dark text-white">My Courses</div>
+            <div class="card-body">
+                <?php if (!empty($courses)): ?>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Created At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($courses as $c): ?>
+                                    <tr>
+                                        <td><?= esc($c['id'] ?? '') ?></td>
+                                        <td><?= esc($c['title'] ?? '') ?></td>
+                                        <td><?= esc($c['description'] ?? '') ?></td>
+                                        <td><?= esc($c['created_at'] ?? '') ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php else: ?>
+                    <p class="mb-0">You have no courses yet.</p>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-header bg-secondary text-white">Recent Submissions</div>
+            <div class="card-body">
+                <?php if (!empty($notifications)): ?>
+                    <ul class="list-group list-group-flush">
+                        <?php foreach ($notifications as $n): ?>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>
+                                    <?= esc($n['student_name'] ?? 'Student') ?>
+                                    submitted work for course #<?= esc($n['course_id'] ?? '') ?>
+                                </span>
+                                <span class="text-muted small">
+                                    <?= esc($n['created_at'] ?? '') ?>
+                                </span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <p class="mb-0">No recent submissions.</p>
+                <?php endif; ?>
+            </div>
+        </div>
     <?php else: ?>
-        <div class="alert alert-info">This dashboard is currently implemented for admin role only.</div>
+        <div class="alert alert-info">This dashboard currently has custom content for admin and teacher roles.</div>
     <?php endif; ?>
 </div>
 <?= $this->endSection() ?>

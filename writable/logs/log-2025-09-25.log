@@ -98,3 +98,17 @@ Stack trace:
 #11 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
 #12 C:\xampp\htdocs\ITE311-CEZAR\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
 #13 {main}
+ERROR - 2025-09-25 16:45:52 --> mysqli_sql_exception: Unknown column 'student_name' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `student...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `student...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `student...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `student...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(225): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
