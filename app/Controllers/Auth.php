@@ -237,7 +237,7 @@ class Auth extends Controller
                     $enrolledCourses = $db->table('enrollments e')
                         ->select('c.id, c.title, c.description, c.created_at')
                         ->join('courses c', 'c.id = e.course_id', 'left')
-                        ->where('e.student_id', $userId)
+                        ->where('e.user_id', $userId)
                         ->orderBy('c.title', 'ASC')
                         ->get()
                         ->getResultArray();
@@ -245,27 +245,37 @@ class Auth extends Controller
                     $enrolledCourses = [];
                 }
                 try {
-                    $upcomingDeadlines = $db->table('assignments a')
-                        ->select('a.id, a.title, a.due_date, c.title as course_title')
-                        ->join('courses c', 'c.id = a.course_id', 'left')
-                        ->where('a.due_date >=', date('Y-m-d'))
-                        ->orderBy('a.due_date', 'ASC')
-                        ->limit(5)
-                        ->get()
-                        ->getResultArray();
+                    // Check if assignments table exists
+                    if ($db->tableExists('assignments')) {
+                        $upcomingDeadlines = $db->table('assignments a')
+                            ->select('a.id, a.title, a.due_date, c.title as course_title')
+                            ->join('courses c', 'c.id = a.course_id', 'left')
+                            ->where('a.due_date >=', date('Y-m-d'))
+                            ->orderBy('a.due_date', 'ASC')
+                            ->limit(5)
+                            ->get()
+                            ->getResultArray();
+                    } else {
+                        $upcomingDeadlines = [];
+                    }
                 } catch (\Throwable $e) {
                     $upcomingDeadlines = [];
                 }
                 try {
-                    $recentGrades = $db->table('grades g')
-                        ->select('g.score, g.created_at, a.title as assignment_title, c.title as course_title')
-                        ->join('assignments a', 'a.id = g.assignment_id', 'left')
-                        ->join('courses c', 'c.id = a.course_id', 'left')
-                        ->where('g.student_id', $userId)
-                        ->orderBy('g.created_at', 'DESC')
-                        ->limit(5)
-                        ->get()
-                        ->getResultArray();
+                    // Check if both grades and assignments tables exist
+                    if ($db->tableExists('grades') && $db->tableExists('assignments')) {
+                        $recentGrades = $db->table('grades g')
+                            ->select('g.score, g.created_at, a.title as assignment_title, c.title as course_title')
+                            ->join('assignments a', 'a.id = g.assignment_id', 'left')
+                            ->join('courses c', 'c.id = a.course_id', 'left')
+                            ->where('g.user_id', $userId)
+                            ->orderBy('g.created_at', 'DESC')
+                            ->limit(5)
+                            ->get()
+                            ->getResultArray();
+                    } else {
+                        $recentGrades = [];
+                    }
                 } catch (\Throwable $e) {
                     $recentGrades = [];
                 }
@@ -280,7 +290,8 @@ class Auth extends Controller
         $data = array_merge([
             'user_name' => $session->get('user_name'),
             'user_email' => $session->get('user_email'),
-            'role' => $role
+            'role' => $role,
+            'user_id' => $userId
         ], $roleData);
 
         return view('auth/dashboard', $data);

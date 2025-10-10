@@ -22,6 +22,10 @@ class CreateEnrollmentsTable extends Migration
                 'type'     => 'INT',
                 'unsigned' => true,
             ],
+            'enrollment_date' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
         ]);
 
         $this->forge->addKey('id', true);
