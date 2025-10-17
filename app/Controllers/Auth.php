@@ -128,8 +128,15 @@ class Auth extends Controller
                         $session->set($sessionData);
                         $session->setFlashdata('success', 'Welcome, ' . $userName . '!');
 
-                        // Unified dashboard redirect
-                        return redirect()->to('/dashboard');
+                        // Role-based redirection
+                        $role = $user['role'] ?? 'student';
+                        if ($role === 'admin') {
+                            return redirect()->to('/admin/dashboard');
+                        } elseif ($role === 'teacher') {
+                            return redirect()->to('/teacher/dashboard');
+                        } else {
+                            return redirect()->to('/announcements');
+                        }
                     } else if ($user) {
                         // Fallback: if password was stored in plain text previously, migrate it
                         $stored = (string) $user['password'];
@@ -150,7 +157,16 @@ class Auth extends Controller
                             $session->regenerate();
                             $session->set($sessionData);
                             $session->setFlashdata('success', 'Welcome, ' . $userName . '!');
-                            return redirect()->to('/dashboard');
+                            
+                            // Role-based redirection
+                            $role = $user['role'] ?? 'student';
+                            if ($role === 'admin') {
+                                return redirect()->to('/admin/dashboard');
+                            } elseif ($role === 'teacher') {
+                                return redirect()->to('/teacher/dashboard');
+                            } else {
+                                return redirect()->to('/announcements');
+                            }
                         }
 
                         $session->setFlashdata('login_error', 'Invalid email or password.');
@@ -218,12 +234,28 @@ class Auth extends Controller
                 }
                 $notifications = [];
                 try {
-                    $notifications = $db->table('submissions')
-                        ->select('student_name, course_id, created_at')
-                        ->orderBy('created_at', 'DESC')
-                        ->limit(5)
-                        ->get()
-                        ->getResultArray();
+                    // Check if submissions table exists and has the required columns
+                    if ($db->tableExists('submissions')) {
+                        $columns = $db->getFieldNames('submissions');
+                        if (in_array('student_name', $columns)) {
+                            $notifications = $db->table('submissions')
+                                ->select('student_name, course_id, created_at')
+                                ->orderBy('created_at', 'DESC')
+                                ->limit(5)
+                                ->get()
+                                ->getResultArray();
+                        } else {
+                            // Fallback if student_name column doesn't exist
+                            $notifications = $db->table('submissions')
+                                ->select('course_id, created_at')
+                                ->orderBy('created_at', 'DESC')
+                                ->limit(5)
+                                ->get()
+                                ->getResultArray();
+                        }
+                    } else {
+                        $notifications = [];
+                    }
                 } catch (\Throwable $e) {
                     $notifications = [];
                 }

@@ -20,7 +20,23 @@ $routes->post('/register', 'Auth::register');
 $routes->get('/login', 'Auth::login');
 $routes->post('/login', 'Auth::login');
 $routes->get('/logout', 'Auth::logout');
-$routes->get('/dashboard', 'Auth::dashboard');
+$routes->get('/dashboard', 'Auth::dashboard', ['filter' => 'roleauth']);
 
 // Course enrollment route
 $routes->post('/course/enroll', 'Course::enroll');
+
+// Announcements route
+$routes->get('/announcements', 'Announcement::index', ['filter' => 'roleauth']);
+
+// Role-based dashboard routes with authorization
+$routes->group('teacher', ['filter' => 'roleauth'], function($routes) {
+    $routes->get('dashboard', 'Teacher::dashboard');
+});
+
+$routes->group('admin', ['filter' => 'roleauth'], function($routes) {
+    $routes->get('dashboard', 'Admin::dashboard');
+});
+
+$routes->group('student', ['filter' => 'roleauth'], function($routes) {
+    $routes->get('dashboard', 'Auth::dashboard');
+});
