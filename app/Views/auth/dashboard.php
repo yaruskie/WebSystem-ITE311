@@ -14,6 +14,12 @@
     <?php endif; ?>
 
     <?php $role = strtolower((string) ($role ?? 'student')); ?>
+    
+    <!-- Welcome Message -->
+    <div class="alert alert-info mb-4">
+        <h4 class="alert-heading">Welcome, <?= esc($user_name ?? 'User') ?>!</h4>
+        <p class="mb-0">You are logged in as a <strong><?= esc(ucfirst($role)) ?></strong>. This is your personalized dashboard.</p>
+    </div>
 
     <?php if ($role === 'admin'): ?>
         <div class="card shadow-sm mb-4">
@@ -122,7 +128,7 @@
                         <?php foreach ($notifications as $n): ?>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <span>
-                                    <?= esc($n['student_name'] ?? 'Student') ?>
+                                    <?= esc($n['student_name'] ?? 'A student') ?>
                                     submitted work for course #<?= esc($n['course_id'] ?? '') ?>
                                 </span>
                                 <span class="text-muted small">
