@@ -20,10 +20,16 @@ $routes->post('/register', 'Auth::register');
 $routes->get('/login', 'Auth::login');
 $routes->post('/login', 'Auth::login');
 $routes->get('/logout', 'Auth::logout');
-$routes->get('/dashboard', 'Auth::dashboard', ['filter' => 'roleauth']);
+$routes->get('/dashboard', 'Auth::dashboard');
 
-// Course enrollment route
 $routes->post('/course/enroll', 'Course::enroll');
+$routes->get('/course/enroll', 'Course::enroll'); // In case needed
+
+// Materials routes
+$routes->get('/admin/course/(:num)/upload', 'Materials::upload/$1');
+$routes->post('/admin/course/(:num)/upload', 'Materials::upload/$1');
+$routes->get('/materials/download/(:num)', 'Materials::download/$1');
+$routes->get('/materials/delete/(:num)', 'Materials::delete/$1');
 
 // Announcements route
 $routes->get('/announcements', 'Announcement::index', ['filter' => 'roleauth']);

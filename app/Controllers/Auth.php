@@ -128,15 +128,8 @@ class Auth extends Controller
                         $session->set($sessionData);
                         $session->setFlashdata('success', 'Welcome, ' . $userName . '!');
 
-                        // Role-based redirection
-                        $role = $user['role'] ?? 'student';
-                        if ($role === 'admin') {
-                            return redirect()->to('/admin/dashboard');
-                        } elseif ($role === 'teacher') {
-                            return redirect()->to('/teacher/dashboard');
-                        } else {
-                            return redirect()->to('/announcements');
-                        }
+                        // Redirect to unified dashboard for all roles
+                        return redirect()->to('/dashboard');
                     } else if ($user) {
                         // Fallback: if password was stored in plain text previously, migrate it
                         $stored = (string) $user['password'];
@@ -157,16 +150,9 @@ class Auth extends Controller
                             $session->regenerate();
                             $session->set($sessionData);
                             $session->setFlashdata('success', 'Welcome, ' . $userName . '!');
-                            
-                            // Role-based redirection
-                            $role = $user['role'] ?? 'student';
-                            if ($role === 'admin') {
-                                return redirect()->to('/admin/dashboard');
-                            } elseif ($role === 'teacher') {
-                                return redirect()->to('/teacher/dashboard');
-                            } else {
-                                return redirect()->to('/announcements');
-                            }
+
+                            // Redirect to unified dashboard for all roles
+                            return redirect()->to('/dashboard');
                         }
 
                         $session->setFlashdata('login_error', 'Invalid email or password.');
@@ -195,13 +181,7 @@ class Auth extends Controller
     public function dashboard()
     {
         $session = session();
-        
-        // Check if user is logged in
-        if (!$session->get('isLoggedIn')) {
-            $session->setFlashdata('login_error', 'Please login to access the dashboard.');
-            return redirect()->to('login');
-        }
-        
+
         $role = strtolower((string) $session->get('role'));
         $userId = (int) $session->get('user_id');
 
@@ -275,6 +255,12 @@ class Auth extends Controller
                         ->getResultArray();
                 } catch (\Throwable $e) {
                     $enrolledCourses = [];
+                }
+
+                // Add materials to enrolled courses
+                $materialModel = new \App\Models\MaterialModel();
+                foreach ($enrolledCourses as &$course) {
+                    $course['materials'] = $materialModel->getMaterialsByCourse($course['id']);
                 }
                 try {
                     // Check if assignments table exists

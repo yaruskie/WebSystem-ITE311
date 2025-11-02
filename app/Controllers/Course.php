@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\CourseModel;
 use App\Models\EnrollmentModel;
+use App\Models\MaterialModel;
 use CodeIgniter\Controller;
 
 class Course extends Controller
@@ -14,28 +15,43 @@ class Course extends Controller
      * @param int $course_id Course ID
      * @return mixed
      */
-    public function view($course_id = null)
+    public function view($course_id)
     {
         $session = session();
 
         // Check if user is logged in
         if (!$session->get('isLoggedIn')) {
-            return redirect()->to('login');
+            return redirect()->to('/login');
         }
 
         $courseModel = new CourseModel();
+        $materialModel = new MaterialModel();
+        $enrollmentModel = new EnrollmentModel();
 
-        if ($course_id) {
-            $course = $courseModel->find($course_id);
-            if (!$course) {
-                return redirect()->to('dashboard')->with('error', 'Course not found');
-            }
-            $data['course'] = $course;
-        } else {
-            $data['courses'] = $courseModel->getAllCoursesWithTeachers();
+        $course = $courseModel->find($course_id);
+        if (!$course) {
+            return redirect()->to('dashboard')->with('error', 'Course not found');
         }
 
-        return view('courses/view', $data);
+        // Check if user is enrolled or has permission to view
+        $user_id = $session->get('user_id');
+        $role = $session->get('role');
+        $enrolled = $enrollmentModel->where(['user_id' => $user_id, 'course_id' => $course_id])->first();
+
+        if (!$enrolled && !in_array($role, ['admin', 'teacher'])) {
+            return redirect()->to('/dashboard')->with('error', 'Access denied. You are not enrolled in this course.');
+        }
+
+        $materials = $materialModel->getMaterialsByCourse($course_id);
+
+        $data = [
+            'course' => $course,
+            'materials' => $materials,
+            'enrolled' => $enrolled,
+            'user_name' => $session->get('user_name')
+        ];
+
+        return view('course_view', $data);
     }
 
     /**

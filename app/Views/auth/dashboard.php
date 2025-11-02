@@ -100,6 +100,7 @@
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>Created At</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -109,8 +110,13 @@
                                         <td><?= esc($c['title'] ?? '') ?></td>
                                         <td><?= esc($c['description'] ?? '') ?></td>
                                         <td><?= esc($c['created_at'] ?? '') ?></td>
+                                        <td>
+                                            <a href="<?php echo base_url('admin/course/' . esc($c['id']) . '/upload'); ?>" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-upload"></i> Upload Materials
+                                            </a>
+                                        </td>
                                     </tr>
-                                <?php endforeach; ?>
+                                    <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
@@ -144,30 +150,37 @@
         </div>
     <?php elseif ($role === 'student'): ?>
         <div class="card shadow-sm mb-4">
-            <div class="card-header bg-dark text-white">My Enrolled Courses</div>
+            <div class="card-header bg-dark text-white">My Enrolled Courses & Materials</div>
             <div class="card-body">
                 <?php if (!empty($enrolledCourses)): ?>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Enrolled Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($enrolledCourses as $c): ?>
-                                    <tr>
-                                        <td><?= esc($c['id'] ?? '') ?></td>
-                                        <td><?= esc($c['title'] ?? '') ?></td>
-                                        <td><?= esc($c['description'] ?? '') ?></td>
-                                        <td><?= esc($c['created_at'] ?? '') ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                    <div class="row">
+                        <?php foreach ($enrolledCourses as $course): ?>
+                            <div class="col-md-6 mb-4">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary"><?php echo esc($course['title']); ?></h5>
+                                        <p class="card-text"><?php echo esc($course['description']); ?></p>
+                                        <p class="text-muted small">Enrolled: <?php echo date('M j, Y', strtotime($course['created_at'])); ?></p>
+
+                                        <h6 class="mt-3">Course Materials</h6>
+                                        <?php if (!empty($course['materials'])): ?>
+                                            <ul class="list-group list-group-flush">
+                                                <?php foreach ($course['materials'] as $material): ?>
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        <span><?php echo esc($material['file_name']); ?></span>
+                                                        <a href="<?php echo base_url('materials/download/' . $material['id']); ?>" class="btn btn-sm btn-primary">
+                                                            <i class="fas fa-download"></i> Download
+                                                        </a>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        <?php else: ?>
+                                            <p class="text-muted small">No materials available yet.</p>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 <?php else: ?>
                     <p class="mb-0">You are not enrolled in any courses yet.</p>
