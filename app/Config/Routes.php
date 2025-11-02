@@ -23,7 +23,6 @@ $routes->get('/logout', 'Auth::logout');
 $routes->get('/dashboard', 'Auth::dashboard');
 
 $routes->post('/course/enroll', 'Course::enroll');
-$routes->get('/course/enroll', 'Course::enroll'); // In case needed
 
 // Materials routes
 $routes->get('/admin/course/(:num)/upload', 'Materials::upload/$1');
@@ -46,3 +45,7 @@ $routes->group('admin', ['filter' => 'roleauth'], function($routes) {
 $routes->group('student', ['filter' => 'roleauth'], function($routes) {
     $routes->get('dashboard', 'Auth::dashboard');
 });
+
+// Notification routes
+$routes->get('/notifications', 'Notifications::get');
+$routes->post('/notifications/mark_read/(:num)', 'Notifications::mark_as_read/$1');

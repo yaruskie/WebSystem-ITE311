@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\CourseModel;
 use App\Models\EnrollmentModel;
 use App\Models\MaterialModel;
+use App\Models\NotificationModel;
 use CodeIgniter\Controller;
 
 class Course extends Controller
@@ -117,6 +118,14 @@ class Course extends Controller
         ];
 
         if ($enrollmentModel->enrollUser($enrollmentData)) {
+            // Create notification for enrollment
+            $notificationModel = new NotificationModel();
+            $notificationModel->insert([
+                'user_id' => $user_id,
+                'message' => 'You have been enrolled in ' . $course['title'],
+                'is_read' => 0
+            ]);
+
             // Get updated enrolled courses for the user
             $enrolledCourses = $enrollmentModel->getUserEnrollments($user_id);
 
