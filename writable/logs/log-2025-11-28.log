@@ -1,0 +1,56 @@
+ERROR - 2025-11-28 03:54:17 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'lms_cezar' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'lms_cezar', 3306, '', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(1525): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(1545): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('sequential')
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MigrationRunner.php(162): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\ITE311-CEZAR\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'lms_cezar' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(1525): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(1545): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('sequential')
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MigrationRunner.php(162): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#10 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#11 C:\xampp\htdocs\ITE311-CEZAR\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-11-28 04:09:25 --> CodeIgniter\Exceptions\InvalidArgumentException: Cache key contains reserved characters {}()/\@:
+[Method: GET, Route: courses/search]
+in SYSTEMPATH\Cache\Handlers\BaseHandler.php on line 73.
+ 1 SYSTEMPATH\Cache\Handlers\FileHandler.php(87): CodeIgniter\Cache\Handlers\BaseHandler::validateKey('throttler_search_::1_3', '')
+ 2 SYSTEMPATH\Throttle\Throttler.php(106): CodeIgniter\Cache\Handlers\FileHandler->get('throttler_search_::1_3')
+ 3 APPPATH\Controllers\Course.php(93): CodeIgniter\Throttle\Throttler->check('search_::1_3', 30, 60)
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Course->search()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Course))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-28 04:09:46 --> CodeIgniter\Exceptions\InvalidArgumentException: Cache key contains reserved characters {}()/\@:
+[Method: GET, Route: courses/search]
+in SYSTEMPATH\Cache\Handlers\BaseHandler.php on line 73.
+ 1 SYSTEMPATH\Cache\Handlers\FileHandler.php(87): CodeIgniter\Cache\Handlers\BaseHandler::validateKey('throttler_search_::1_3', '')
+ 2 SYSTEMPATH\Throttle\Throttler.php(106): CodeIgniter\Cache\Handlers\FileHandler->get('throttler_search_::1_3')
+ 3 APPPATH\Controllers\Course.php(93): CodeIgniter\Throttle\Throttler->check('search_::1_3', 30, 60)
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Course->search()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Course))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

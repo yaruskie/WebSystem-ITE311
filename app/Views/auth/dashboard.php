@@ -189,7 +189,12 @@
         </div>
 
         <div class="card shadow-sm mb-4">
-            <div class="card-header bg-primary text-white">Available Courses</div>
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <span>Available Courses</span>
+                <a href="<?= site_url('courses') ?>" class="btn btn-sm btn-light">
+                    <i class="fas fa-search me-1"></i>Browse All Courses
+                </a>
+            </div>
             <div class="card-body">
                 <div id="available-courses">
                     <?php

@@ -22,6 +22,11 @@ $routes->post('/login', 'Auth::login');
 $routes->get('/logout', 'Auth::logout');
 $routes->get('/dashboard', 'Auth::dashboard');
 
+// Course routes
+$routes->get('/courses', 'Course::index');
+$routes->get('/courses/search', 'Course::search');
+$routes->post('/courses/search', 'Course::search');
+$routes->get('/courses/view/(:num)', 'Course::view/$1');
 $routes->post('/course/enroll', 'Course::enroll');
 
 // Materials routes
