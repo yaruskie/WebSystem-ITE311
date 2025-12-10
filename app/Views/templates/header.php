@@ -11,9 +11,14 @@
                 <a class="btn btn-outline-light" href="<?= site_url('announcements') ?>">Announcements</a>
                 <a class="btn btn-light" href="<?= site_url('dashboard') ?>">Dashboard</a>
 
+                <?php if ($role === 'admin'): ?>
+                    <a class="btn btn-success fw-bold" href="<?= site_url('admin/users') ?>">👥 Manage Users</a>
+                    <a class="btn btn-info fw-bold" href="<?= site_url('admin/courses') ?>">📚 Manage Courses</a>
+                <?php endif; ?>
+
                 <?php $unreadCount = session('unread_notification_count') ?? 0; ?>
                 <div class="dropdown">
-                    <button class="btn btn-outline-info dropdown-toggle position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-outline-success dropdown-toggle position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         Notifications
                         <?php if ($unreadCount > 0): ?>
                             <span class="badge bg-danger position-absolute top-0 start-100 translate-middle"><?php echo $unreadCount; ?></span>

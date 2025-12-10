@@ -28,60 +28,70 @@ class RoleAuth implements FilterInterface
         $session = session();
         $uri = $request->getUri();
         $path = $uri->getPath();
-        
+
         // Debug logging
         log_message('info', "RoleAuth Filter - Path: {$path}");
-        
+
         // Check if user is logged in
         if (!$session->get('isLoggedIn')) {
             log_message('info', "RoleAuth Filter - User not logged in, redirecting to login");
             $session->setFlashdata('login_error', 'Please login to access this page.');
             return redirect()->to('/login');
         }
-        
-        $userRole = $session->get('role');
-        
-        // Debug logging
-        log_message('info', "RoleAuth Filter - User Role: {$userRole}, Path: {$path}");
-        
+
+        $userRole = strtolower((string) $session->get('role'));
+        $userStatus = $session->get('status') ?? 'active';
+
+        log_message('info', "RoleAuth Filter - User Role: {$userRole}, Status: {$userStatus}, Path: {$path}");
+
+        // Block inactive accounts
+        if ($userStatus !== 'active') {
+            log_message('info', "RoleAuth Filter - Inactive account for user, redirecting to login");
+            $session->destroy();
+            return redirect()->to('/login');
+        }
+
         // Check role-based access
         if ($userRole === 'admin') {
             // Admins can access any route starting with /admin
-            if (strpos($path, '/admin') === 0) {
+            if (strpos($path, '/admin') !== false) {
                 log_message('info', "RoleAuth Filter - Admin access granted to: {$path}");
                 return; // Allow access
             }
         } elseif ($userRole === 'teacher') {
             // Teachers can access routes starting with /teacher
-            if (strpos($path, '/teacher') === 0) {
+            if (strpos($path, '/teacher') !== false) {
                 log_message('info', "RoleAuth Filter - Teacher access granted to: {$path}");
                 return; // Allow access
             }
         } elseif ($userRole === 'student') {
             // Students can access /student routes and /announcements
-            if (strpos($path, '/student') === 0 || $path === '/announcements') {
+            if (strpos($path, '/student') !== false || strpos($path, '/announcements') !== false) {
                 log_message('info', "RoleAuth Filter - Student access granted to: {$path}");
                 return; // Allow access
             }
         }
-        
+
         // Allow access to general routes for all logged-in users
         $allowedGeneralRoutes = ['/announcements', '/dashboard', '/logout', '/', '/about', '/contact'];
         if (in_array($path, $allowedGeneralRoutes)) {
             log_message('info', "RoleAuth Filter - General access granted to: {$path}");
             return; // Allow access
         }
-        
+
         // If user tries to access a route not permitted for their role
         log_message('info', "RoleAuth Filter - Access denied for role {$userRole} to path {$path}");
         $session->setFlashdata('error', 'Access Denied: Insufficient Permissions');
-        
+
         // Redirect based on user role to appropriate dashboard
         if ($userRole === 'admin') {
+            log_message('info', "RoleAuth Filter - Redirecting admin to /admin/dashboard");
             return redirect()->to('/admin/dashboard');
         } elseif ($userRole === 'teacher') {
+            log_message('info', "RoleAuth Filter - Redirecting teacher to /teacher/dashboard");
             return redirect()->to('/teacher/dashboard');
         } else {
+            log_message('info', "RoleAuth Filter - Redirecting to /dashboard");
             return redirect()->to('/dashboard');
         }
     }

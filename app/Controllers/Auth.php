@@ -101,16 +101,30 @@ class Auth extends Controller
             ];
             
             if ($this->validate($rules)) {
-                $email = $this->request->getPost('email');
-                $password = $this->request->getPost('password');
+                $email = (string) $this->request->getPost('email');
+                $password = (string) $this->request->getPost('password');
+
+                // Debug logging for login attempts
+                log_message('info', 'Auth::login() - Attempting login for: ' . $email);
                 
                 try {
                     $model = new UserModel();
                     
                     // Find user by email only
                     $user = $model->where('email', $email)->first();
+                    if ($user) {
+                        log_message('info', 'Auth::login() - User found id=' . ($user['id'] ?? 'N/A') . ' email=' . ($user['email'] ?? ''));
+                    } else {
+                        log_message('info', 'Auth::login() - No user found for email: ' . $email);
+                    }
                     
                     if ($user && password_verify($password, $user['password'])) {
+                        log_message('info', 'Auth::login() - Password verified for user id=' . ($user['id'] ?? 'N/A'));
+                        // Prevent login if account is inactive
+                        if (isset($user['status']) && $user['status'] !== 'active') {
+                            $session->setFlashdata('login_error', 'Your account is inactive. Contact an administrator.');
+                            return redirect()->to('/login');
+                        }
                         // Use the name field directly from database
                         $userName = $user['name'] ?? $user['email'];
                         
@@ -120,21 +134,29 @@ class Auth extends Controller
                             'user_name' => $userName,
                             'user_email' => $user['email'],
                             'role' => $user['role'] ?? 'student',
+                            'status' => $user['status'] ?? 'active',
                             'isLoggedIn' => true
                         ];
-                        
+
                         // Prevent session fixation
-                        $session->regenerate();
+                        // $session->regenerate(); // Temporarily disabled to fix redirect loop
                         $session->set($sessionData);
                         $session->setFlashdata('success', 'Welcome, ' . $userName . '!');
 
                         // Redirect to unified dashboard for all roles
                         return redirect()->to('/dashboard');
                     } else if ($user) {
+                        // Password failed
+                        log_message('warning', 'Auth::login() - Password verification failed for email: ' . $email);
                         // Fallback: if password was stored in plain text previously, migrate it
                         $stored = (string) $user['password'];
                         $looksHashed = str_starts_with($stored, '$2y$') || str_starts_with($stored, '$2a$') || str_starts_with($stored, '$argon2');
                         if (! $looksHashed && hash_equals($stored, $password)) {
+                            // Prevent login if account is inactive (legacy plaintext branch)
+                            if (isset($user['status']) && $user['status'] !== 'active') {
+                                $session->setFlashdata('login_error', 'Your account is inactive. Contact an administrator.');
+                                return redirect()->to('/login');
+                            }
                             // Rehash and update
                             $newHash = password_hash($password, PASSWORD_DEFAULT);
                             $model->update($user['id'], ['password' => $newHash]);
@@ -145,9 +167,10 @@ class Auth extends Controller
                                 'user_name' => $userName,
                                 'user_email' => $user['email'],
                                 'role' => $user['role'] ?? 'student',
+                                'status' => $user['status'] ?? 'active',
                                 'isLoggedIn' => true
                             ];
-                            $session->regenerate();
+                            // $session->regenerate(); // Temporarily disabled
                             $session->set($sessionData);
                             $session->setFlashdata('success', 'Welcome, ' . $userName . '!');
 
@@ -159,7 +182,12 @@ class Auth extends Controller
                     }
                 } catch (\Exception $e) {
                     log_message('error', 'Login exception: ' . $e->getMessage());
-                    $session->setFlashdata('login_error', 'Login failed. Please try again.');
+                    // If it's a DB connection problem, show a clearer message to the user
+                    $msg = 'Login failed. Please try again.';
+                    if (str_contains(strtolower($e->getMessage()), 'unable to connect') || str_contains(strtolower($e->getMessage()), 'could not be made')) {
+                        $msg = 'Unable to connect to the database. Please start your database server (e.g. MySQL) and try again.';
+                    }
+                    $session->setFlashdata('login_error', $msg);
                 }
             } else {
                 $session->setFlashdata('login_error', 'Please check your input and try again.');
@@ -181,6 +209,14 @@ class Auth extends Controller
     public function dashboard()
     {
         $session = session();
+
+        // Check if account is active
+        $userStatus = $session->get('status') ?? 'active';
+        if ($userStatus !== 'active') {
+            $session->setFlashdata('error', 'Your account has been deactivated. Contact an administrator.');
+            $session->destroy();
+            return redirect()->to('/login');
+        }
 
         $role = strtolower((string) $session->get('role'));
         $userId = (int) $session->get('user_id');

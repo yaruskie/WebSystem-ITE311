@@ -45,6 +45,14 @@ $routes->group('teacher', ['filter' => 'roleauth'], function($routes) {
 
 $routes->group('admin', ['filter' => 'roleauth'], function($routes) {
     $routes->get('dashboard', 'Admin::dashboard');
+    $routes->get('courses', 'Admin::courses');
+    // Manage users
+    $routes->get('users', 'UserManagement::index');
+    $routes->post('users/update_role', 'UserManagement::updateRole');
+    $routes->post('users/add', 'UserManagement::addUser');
+    $routes->post('users/toggle_status', 'UserManagement::toggleStatus');
+    $routes->post('users/edit', 'UserManagement::editUser');
+    $routes->post('users/delete', 'UserManagement::deleteUser');
 });
 
 $routes->group('student', ['filter' => 'roleauth'], function($routes) {

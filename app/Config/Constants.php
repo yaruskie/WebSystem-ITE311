@@ -42,6 +42,9 @@ defined('MONTH')  || define('MONTH', 2_592_000);
 defined('YEAR')   || define('YEAR', 31_536_000);
 defined('DECADE') || define('DECADE', 315_360_000);
 
+// Protected admin account (email). This account cannot be deleted or have its role changed.
+defined('PROTECTED_ADMIN_EMAIL') || define('PROTECTED_ADMIN_EMAIL', 'admin@example.com');
+
 /*
  | --------------------------------------------------------------------------
  | Exit Status Codes

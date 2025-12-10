@@ -7,6 +7,53 @@
     <!-- Bootstrap CSS via CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom theme overrides (green) -->
+    <style>
+        :root{
+            /* Primary brand color */
+            --bs-primary: #198754; /* bootstrap success green */
+            --bs-body-color: #1b3b2a;
+            /* Dark variant used for headers/navbars */
+            --bs-dark: #0f5132;
+            /* Secondary accent (lighter green) */
+            --bs-secondary: #6cc08a;
+            --bs-success: #198754;
+            --bs-info: #20c997;
+        }
+
+        /* Override some default components for a consistent green look */
+        .navbar.bg-dark, .card-header.bg-dark {
+            background-color: var(--bs-dark) !important;
+            color: #fff !important;
+        }
+
+        .card-header.bg-secondary {
+            background-color: var(--bs-secondary) !important;
+            color: #fff !important;
+        }
+
+        .btn-primary {
+            background-color: var(--bs-primary) !important;
+            border-color: var(--bs-primary) !important;
+        }
+
+        .btn-outline-primary {
+            color: var(--bs-primary) !important;
+            border-color: var(--bs-primary) !important;
+        }
+
+        .badge.bg-dark {
+            background-color: var(--bs-dark) !important;
+        }
+
+        /* Tweak alert colors to match theme */
+        .alert-info {
+            background-color: #e6f4eb;
+            color: #155724;
+            border-color: #c7eed6;
+        }
+    </style>
+
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 

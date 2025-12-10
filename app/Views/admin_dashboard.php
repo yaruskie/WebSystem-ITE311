@@ -32,16 +32,16 @@
                         <div class="card-body">
                             <h5 class="card-title">User Management</h5>
                             <p class="card-text">Manage users, roles, and permissions.</p>
-                            <a href="#" class="btn btn-primary">Manage Users</a>
+                            <a href="<?= site_url('/admin/users') ?>" class="btn btn-primary">Manage Users</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">System Settings</h5>
-                            <p class="card-text">Configure system settings and preferences.</p>
-                            <a href="#" class="btn btn-secondary">Settings</a>
+                            <h5 class="card-title">Manage Courses</h5>
+                            <p class="card-text">Upload materials and manage course content.</p>
+                            <a href="<?= site_url('/admin/courses') ?>" class="btn btn-success">Manage Courses</a>
                         </div>
                     </div>
                 </div>
