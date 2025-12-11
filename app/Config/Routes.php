@@ -41,11 +41,20 @@ $routes->get('/announcements', 'Announcement::index', ['filter' => 'roleauth']);
 // Role-based dashboard routes with authorization
 $routes->group('teacher', ['filter' => 'roleauth'], function($routes) {
     $routes->get('dashboard', 'Teacher::dashboard');
+    $routes->get('manage-students', 'Teacher::manageStudentsOverview');
+    $routes->get('manage-students/(:num)', 'Teacher::manageStudents/$1');
+    $routes->get('manage-students-simple/(:num)', 'Teacher::manageStudentsSimple/$1');
+    $routes->get('get-students/(:num)', 'Teacher::getStudents/$1');
+    $routes->get('get-courses-nav', 'Teacher::getCoursesForNav');
+    $routes->post('update-student-status', 'Teacher::updateStudentStatus');
+    $routes->post('remove-student', 'Teacher::removeStudent');
 });
 
 $routes->group('admin', ['filter' => 'roleauth'], function($routes) {
     $routes->get('dashboard', 'Admin::dashboard');
     $routes->get('courses', 'Admin::courses');
+    $routes->post('updateCourse', 'Admin::updateCourse');
+    $routes->post('updateCourseStatus', 'Admin::updateCourseStatus');
     // Manage users
     $routes->get('users', 'UserManagement::index');
     $routes->post('users/update_role', 'UserManagement::updateRole');

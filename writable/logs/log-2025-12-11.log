@@ -1,0 +1,306 @@
+CRITICAL - 2025-12-11 05:42:37 --> ErrorException: Undefined variable $totalCourses
+[Method: GET, Route: admin/courses]
+in APPPATH\Views\admin\courses.php on line 37.
+ 1 APPPATH\Views\admin\courses.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalCourses', 'C:\\xampp\\htdocs\\ITE311-CEZAR\\app\\Views\\admin\\courses.php', 37)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\ITE311-CEZAR\\app\\Views\\admin\\courses.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('admin/courses', [], true)
+ 5 APPPATH\Controllers\Admin.php(70): view('admin/courses', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->courses()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-12-11 05:56:43 --> mysqli_sql_exception: Unknown column 'course_code' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `courses...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `courses...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `courses...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `courses...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\BaseModel.php(1025): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\Model.php(860): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Admin.php(153): CodeIgniter\Model->update('1', Array)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Admin->updateCourse()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#10 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-12-11 05:56:43 --> Admin::updateCourse - Exception occurred: Unknown column 'course_code' in 'field list'
+ERROR - 2025-12-11 05:58:08 --> mysqli_sql_exception: Unknown column 'course_code' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `courses...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `courses...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `courses...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `courses...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\BaseModel.php(1025): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\Model.php(860): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Admin.php(153): CodeIgniter\Model->update('1', Array)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Admin->updateCourse()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#10 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-12-11 05:58:08 --> Admin::updateCourse - Exception occurred: Unknown column 'course_code' in 'field list'
+ERROR - 2025-12-11 05:58:23 --> mysqli_sql_exception: Unknown column 'course_code' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `courses...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `courses...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `courses...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `courses...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\BaseModel.php(1025): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\Model.php(860): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Admin.php(153): CodeIgniter\Model->update('1', Array)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Admin->updateCourse()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#10 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-12-11 05:58:23 --> Admin::updateCourse - Exception occurred: Unknown column 'course_code' in 'field list'
+ERROR - 2025-12-11 05:58:27 --> mysqli_sql_exception: Unknown column 'course_code' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `courses...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `courses...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `courses...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `courses...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\BaseModel.php(1025): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\Model.php(860): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Admin.php(153): CodeIgniter\Model->update('1', Array)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Admin->updateCourse()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#10 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-12-11 05:58:27 --> Admin::updateCourse - Exception occurred: Unknown column 'course_code' in 'field list'
+ERROR - 2025-12-11 05:58:31 --> mysqli_sql_exception: Unknown column 'course_code' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('UPDATE `courses...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `courses...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `courses...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `courses...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\BaseModel.php(1025): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\Model.php(860): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Admin.php(153): CodeIgniter\Model->update('1', Array)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Admin->updateCourse()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#10 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-12-11 05:58:31 --> Admin::updateCourse - Exception occurred: Unknown column 'course_code' in 'field list'
+ERROR - 2025-12-11 06:16:17 --> mysqli_sql_exception: Unknown column 'course_id' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `course_...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `course_...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `course_...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `course_...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(269): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-12-11 06:18:36 --> mysqli_sql_exception: Unknown column 'course_id' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `course_...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `course_...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `course_...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `course_...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(269): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-12-11 06:22:13 --> mysqli_sql_exception: Unknown column 'course_id' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `course_...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `course_...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `course_...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `course_...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(269): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-12-11 06:22:57 --> mysqli_sql_exception: Unknown column 'course_id' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `course_...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `course_...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `course_...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `course_...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(269): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-12-11 06:24:52 --> mysqli_sql_exception: Unknown column 'course_id' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `course_...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `course_...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `course_...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `course_...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(269): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-12-11 06:24:53 --> mysqli_sql_exception: Unknown column 'course_id' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `course_...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `course_...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `course_...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `course_...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(269): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-12-11 06:24:53 --> mysqli_sql_exception: Unknown column 'course_id' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `course_...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `course_...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `course_...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `course_...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(269): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-12-11 06:24:54 --> mysqli_sql_exception: Unknown column 'course_id' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `course_...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `course_...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `course_...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `course_...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(269): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-12-11 06:24:54 --> mysqli_sql_exception: Unknown column 'course_id' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `course_...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `course_...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `course_...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `course_...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(269): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-12-11 06:26:55 --> mysqli_sql_exception: Unknown column 'course_id' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `course_...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `course_...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `course_...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `course_...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(269): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+ERROR - 2025-12-11 06:28:16 --> mysqli_sql_exception: Unknown column 'course_id' in 'field list' in C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-CEZAR\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `course_...', 0)
+#1 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `course_...')
+#2 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `course_...')
+#3 C:\xampp\htdocs\ITE311-CEZAR\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `course_...', Array, false)
+#4 C:\xampp\htdocs\ITE311-CEZAR\app\Controllers\Auth.php(269): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+#6 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-CEZAR\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-CEZAR\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-CEZAR\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+WARNING - 2025-12-11 06:29:01 --> [DEPRECATED] Creation of dynamic property App\Controllers\Notifications::$notificationModel is deprecated in APPPATH\Controllers\Notifications.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Notifications->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-11 06:29:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-12-11 07:07:15 --> [DEPRECATED] Creation of dynamic property App\Controllers\Notifications::$notificationModel is deprecated in APPPATH\Controllers\Notifications.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Notifications->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-11 07:07:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-12-11 07:24:15 --> [DEPRECATED] Creation of dynamic property App\Controllers\Notifications::$notificationModel is deprecated in APPPATH\Controllers\Notifications.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Notifications->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-11 07:24:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-12-11 08:00:15 --> [DEPRECATED] Creation of dynamic property App\Controllers\Notifications::$notificationModel is deprecated in APPPATH\Controllers\Notifications.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Notifications->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-11 08:00:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-12-11 08:16:15 --> [DEPRECATED] Creation of dynamic property App\Controllers\Notifications::$notificationModel is deprecated in APPPATH\Controllers\Notifications.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Notifications->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-11 08:16:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-12-11 08:34:15 --> [DEPRECATED] Creation of dynamic property App\Controllers\Notifications::$notificationModel is deprecated in APPPATH\Controllers\Notifications.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Notifications->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-11 08:34:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

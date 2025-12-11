@@ -16,6 +16,10 @@
                     <a class="btn btn-info fw-bold" href="<?= site_url('admin/courses') ?>">📚 Manage Courses</a>
                 <?php endif; ?>
 
+                <?php if ($role === 'teacher'): ?>
+                    <a class="btn btn-warning fw-bold" href="<?= site_url('teacher/manage-students') ?>">👨‍🏫 Manage Students</a>
+                <?php endif; ?>
+
                 <?php $unreadCount = session('unread_notification_count') ?? 0; ?>
                 <div class="dropdown">
                     <button class="btn btn-outline-success dropdown-toggle position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">

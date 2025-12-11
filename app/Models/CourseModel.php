@@ -12,8 +12,15 @@ class CourseModel extends Model
     protected $returnType = 'array';
 
     protected $allowedFields = [
+        'course_code',
         'title',
+        'school_year',
+        'semester',
         'description',
+        'schedule',
+        'status',
+        'start_date',
+        'end_date',
         'teacher_id',
         'created_at',
         'updated_at',

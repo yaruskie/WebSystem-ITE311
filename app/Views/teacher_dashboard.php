@@ -26,6 +26,40 @@
                 <p>This is your dedicated teacher workspace. Here you can manage your courses, view student submissions, and access teaching tools.</p>
             </div>
             
+            <!-- Your Courses Section -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3>Your Courses</h3>
+                    <?php if (empty($courses)): ?>
+                        <div class="alert alert-info">
+                            <p>You have not been assigned to any courses yet. Please contact an administrator.</p>
+                        </div>
+                    <?php else: ?>
+                        <div class="row">
+                            <?php foreach ($courses as $course): ?>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <?= esc($course['course_code'] ?? 'N/A') ?> - <?= esc($course['title']) ?>
+                                            </h5>
+                                            <p class="card-text">
+                                                <?= esc($course['description']) ?><br>
+                                                <small class="text-muted">
+                                                    <?= esc($course['school_year'] ?? '') ?> - <?= esc($course['semester'] ?? '') ?><br>
+                                                    Status: <span class="badge bg-<?= $course['status'] === 'Active' ? 'success' : 'secondary' ?>"><?= esc($course['status']) ?></span>
+                                                </small>
+                                            </p>
+                                            <a href="<?= site_url('teacher/manage-students/' . $course['id']) ?>" class="btn btn-primary btn-sm">Manage Students</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
