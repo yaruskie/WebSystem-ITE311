@@ -196,6 +196,16 @@
                 </a>
             </div>
             <div class="card-body">
+                <!-- Search Bar -->
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            <input type="text" class="form-control" id="studentCourseSearch" placeholder="Search available courses...">
+                        </div>
+                    </div>
+                </div>
+
                 <div id="available-courses">
                     <?php
                     try {
@@ -204,19 +214,27 @@
                         $availableCourses = $enrollmentModel->getAvailableCourses($user_id);
 
                         if (!empty($availableCourses)) {
-                            echo '<div class="row g-3">';
+                            echo '<div class="row g-3" id="coursesContainer">';
                             foreach ($availableCourses as $course) {
-                                echo '<div class="col-md-6 col-lg-4">';
+                                $title = esc($course['title'] ?? 'Untitled Course');
+                                $description = esc($course['description'] ?? 'No description available');
+                                $teacherName = esc($course['teacher_name'] ?? 'Unknown');
+                                $courseId = esc($course['id']);
+
+                                echo '<div class="col-md-6 col-lg-4 course-card" ';
+                                echo 'data-course-title="' . strtolower($course['title'] ?? '') . '" ';
+                                echo 'data-course-description="' . strtolower($course['description'] ?? '') . '" ';
+                                echo 'data-teacher-name="' . strtolower($course['teacher_name'] ?? '') . '">';
                                 echo '<div class="card h-100 border-0 shadow-sm">';
                                 echo '<div class="card-body">';
-                                echo '<h6 class="card-title text-primary">' . esc($course['title'] ?? 'Untitled Course') . '</h6>';
-                                echo '<p class="card-text text-muted small">' . esc(substr($course['description'] ?? 'No description available', 0, 100));
-                                if (strlen($course['description'] ?? '') > 100) {
+                                echo '<h6 class="card-title text-primary">' . $title . '</h6>';
+                                echo '<p class="card-text text-muted small">' . substr($description, 0, 100);
+                                if (strlen($description) > 100) {
                                     echo '...';
                                 }
                                 echo '</p>';
-                                echo '<p class="card-text"><small class="text-muted">Teacher: ' . esc($course['teacher_name'] ?? 'Unknown') . '</small></p>';
-                                echo '<button class="btn btn-success enroll-btn" data-course-id="' . esc($course['id']) . '">';
+                                echo '<p class="card-text"><small class="text-muted">Teacher: ' . $teacherName . '</small></p>';
+                                echo '<button class="btn btn-success enroll-btn" data-course-id="' . $courseId . '">';
                                 echo '<i class="fas fa-plus me-1"></i>Enroll</button>';
                                 echo '</div></div></div>';
                             }
@@ -236,6 +254,13 @@
                         echo '</div>';
                     }
                     ?>
+                </div>
+
+                <!-- No Results Message -->
+                <div id="noResultsMessage" class="text-center py-4" style="display: none;">
+                    <i class="fas fa-search fa-2x text-muted mb-2"></i>
+                    <p class="text-muted">No courses found matching your search.</p>
+                    <button class="btn btn-outline-primary btn-sm" onclick="clearStudentSearch()">Clear Search</button>
                 </div>
             </div>
         </div>
@@ -309,6 +334,44 @@
 (function($) {
     $(document).ready(function() {
         console.log('jQuery loaded, setting up enrollment handlers...');
+
+        // Search functionality for student's available courses
+        $('#studentCourseSearch').on('keyup', function() {
+            const searchTerm = $(this).val().toLowerCase().trim();
+            const $courseCards = $('.course-card');
+            let visibleCount = 0;
+
+            if (searchTerm === '') {
+                // Show all courses if search is empty
+                $courseCards.show();
+                $('#noResultsMessage').hide();
+                return;
+            }
+
+            // Filter courses client-side
+            $courseCards.each(function() {
+                const $card = $(this);
+                const title = $card.data('course-title') || '';
+                const description = $card.data('course-description') || '';
+                const teacher = $card.data('teacher-name') || '';
+
+                if (title.includes(searchTerm) ||
+                    description.includes(searchTerm) ||
+                    teacher.includes(searchTerm)) {
+                    $card.show();
+                    visibleCount++;
+                } else {
+                    $card.hide();
+                }
+            });
+
+            // Show/hide no results message
+            if (visibleCount === 0) {
+                $('#noResultsMessage').show();
+            } else {
+                $('#noResultsMessage').hide();
+            }
+        });
 
     // Handle enrollment button clicks
     $(document).on('click', '.enroll-btn', function(e) {
@@ -478,6 +541,13 @@
         div.textContent = text;
         return div.innerHTML;
     }
+
+    // Clear student search function
+    window.clearStudentSearch = function() {
+        $('#studentCourseSearch').val('');
+        $('#studentCourseSearch').trigger('keyup');
+        $('#noResultsMessage').hide();
+    };
 });
 })(jQuery);
 </script>
