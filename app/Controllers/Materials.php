@@ -40,6 +40,14 @@ class Materials extends BaseController
             // Handle file upload
             $file = $this->request->getFile('material');
             if ($file->isValid() && !$file->hasMoved()) {
+                // Reject certain document types (e.g. .doc, .docx)
+                $ext = strtolower($file->getClientExtension());
+                $disallowed = ['doc', 'docx'];
+                if (in_array($ext, $disallowed)) {
+                    $session->setFlashdata('error', 'Upload of .doc or .docx files is not allowed.');
+                    return redirect()->back();
+                }
+
                 $newName = $file->getRandomName();
                 $file->move(WRITEPATH . 'uploads', $newName);
 
