@@ -96,7 +96,7 @@
                             </thead>
                             <tbody>
                                 <?php foreach ($courses as $course): ?>
-                                <tr data-course-id="<?= esc($course['id']) ?>">
+                                <tr data-course-id="<?= esc($course['id']) ?>" data-start-date="<?= esc($course['start_date'] ?? '') ?>" data-end-date="<?= esc($course['end_date'] ?? '') ?>">
                                     <td class="align-middle"><?= esc($course['course_code'] ?? '') ?></td>
                                     <td class="align-middle">
                                         <strong><?= esc($course['title']) ?></strong>
@@ -147,6 +147,8 @@
                 <div class="modal-body">
                     <input type="hidden" id="editCourseId" name="course_id">
 
+                    <!-- Last Updated removed per request -->
+
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="editCourseCode" class="form-label">Course Code</label>
@@ -168,15 +170,15 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label for="editStartDate" class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="editStartDate" name="start_date">
+                            <label for="editStartDate" class="form-label">Start Date & Time</label>
+                            <input type="datetime-local" class="form-control" id="editStartDate" name="start_date">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="editEndDate" class="form-label">End Date</label>
-                            <input type="date" class="form-control" id="editEndDate" name="end_date">
+                            <label for="editEndDate" class="form-label">End Date & Time</label>
+                            <input type="datetime-local" class="form-control" id="editEndDate" name="end_date">
                         </div>
                         <div class="col-md-6">
                             <label for="editTeacher" class="form-label">Teacher</label>
@@ -296,6 +298,19 @@ $(document).ready(function() {
                 return false;
             }
         });
+
+        // Populate start/end datetime inputs from row attributes (if available)
+        const rowStart = row.attr('data-start-date');
+        const rowEnd = row.attr('data-end-date');
+        const toInputValue = (dt) => {
+            if (!dt) return '';
+            // Normalize 'YYYY-MM-DD HH:MM:SS' -> 'YYYY-MM-DDTHH:MM' for datetime-local
+            let v = dt.replace(' ', 'T');
+            if (v.length > 16) v = v.substring(0, 16);
+            return v;
+        };
+        $('#editStartDate').val(toInputValue(rowStart));
+        $('#editEndDate').val(toInputValue(rowEnd));
     });
 
     // Form submission
@@ -312,6 +327,19 @@ $(document).ready(function() {
         }
 
         const formData = new FormData(this);
+        const editingCourseId = $('#editCourseId').val();
+
+        // Convert datetime-local (YYYY-MM-DDTHH:MM) to server format 'YYYY-MM-DD HH:MM:SS'
+        const toServerDateTime = (dt) => {
+            if (!dt) return '';
+            if (dt.indexOf('T') !== -1) {
+                return dt.replace('T', ' ') + ':00';
+            }
+            return dt;
+        };
+
+        formData.set('start_date', toServerDateTime(startDate));
+        formData.set('end_date', toServerDateTime(endDate));
 
         $.ajax({
             url: '<?= site_url('admin/updateCourse') ?>',
@@ -321,8 +349,19 @@ $(document).ready(function() {
             contentType: false,
             success: function(response) {
                 if (response.success) {
-                    $('#editCourseModal').modal('hide');
-                    location.reload();
+                    // Update the row's stored start/end datetime attributes so next open shows fresh values
+                    const serverStart = formData.get('start_date') || '';
+                    const serverEnd = formData.get('end_date') || '';
+                    const row = $('#coursesTable tbody tr[data-course-id="' + editingCourseId + '"]');
+                    if (row.length) {
+                        row.attr('data-start-date', serverStart);
+                        row.attr('data-end-date', serverEnd);
+                    }
+
+                    // Close modal after short delay so user sees the updated values briefly
+                    setTimeout(function() {
+                        $('#editCourseModal').modal('hide');
+                    }, 700);
                 } else {
                     alert(response.message || 'Failed to update course');
                 }
@@ -331,6 +370,12 @@ $(document).ready(function() {
                 alert('An error occurred while updating the course');
             }
         });
+    });
+
+    // Clear datetime inputs when modal hides
+    $('#editCourseModal').on('hidden.bs.modal', function () {
+        $('#editStartDate').val('');
+        $('#editEndDate').val('');
     });
 });
 </script>

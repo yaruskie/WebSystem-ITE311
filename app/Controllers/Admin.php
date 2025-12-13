@@ -106,8 +106,8 @@ class Admin extends Controller
             'schedule' => 'permit_empty|max_length[100]',
             'status' => 'required|in_list[Active,Inactive]',
             'teacher_id' => 'required|numeric',
-            'start_date' => 'permit_empty|valid_date[Y-m-d]',
-            'end_date' => 'permit_empty|valid_date[Y-m-d]'
+            'start_date' => 'permit_empty',
+            'end_date' => 'permit_empty'
         ];
 
         if (!$this->validate($rules)) {
@@ -132,6 +132,8 @@ class Admin extends Controller
         }
 
         $courseModel = new CourseModel();
+        $now = date('Y-m-d H:i:s');
+
         $data = [
             'course_code' => $this->request->getPost('course_code'),
             'title' => $this->request->getPost('title'),
@@ -143,7 +145,7 @@ class Admin extends Controller
             'teacher_id' => $this->request->getPost('teacher_id'),
             'start_date' => $startDate ?: null,
             'end_date' => $endDate ?: null,
-            'updated_at' => date('Y-m-d H:i:s')
+            'updated_at' => $now
         ];
 
         // Log the update attempt
@@ -154,7 +156,9 @@ class Admin extends Controller
                 log_message('info', 'Admin::updateCourse - Course updated successfully: ' . $courseId);
                 return $this->response->setJSON([
                     'success' => true,
-                    'message' => 'Course updated successfully'
+                    'message' => 'Course updated successfully',
+                    'updated_at' => $now,
+                    'course_id' => $courseId
                 ]);
             } else {
                 log_message('error', 'Admin::updateCourse - CourseModel update returned false for course ID: ' . $courseId);
